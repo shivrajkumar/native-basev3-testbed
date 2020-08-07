@@ -12,6 +12,10 @@ yarn
 
 ## Run the app
 
+```bash
+yarn start
+```
+
 Please make sure that you have Expo installed in your system.
 
 ```bash
