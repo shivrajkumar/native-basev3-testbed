@@ -15,7 +15,7 @@ import {
   View,
   ZStack,
 } from "../../src/components/primitives";
-import { AppBar, Button, IconButton } from "../../src/components/composites";
+import { AppBar, Badge, Button, IconButton } from "../../src/components/composites";
 import Theme from "../../src/theme";
 
 type GetStory = () => JSX.Element | JSX.Element[];
@@ -29,7 +29,7 @@ storiesOf("Primitives", module)
       </View>
     </ThemeProvider>
   ))
-
+  .add("Badge", () => <Badge value={22} />)
   .add("VStack", () => (
     <VStack space={8}>
       <Text>Test Text</Text>
