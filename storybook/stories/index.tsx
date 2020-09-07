@@ -2,7 +2,8 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { storiesOf } from "@storybook/react-native";
-import { boolean, color, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { color, number, select, text, withKnobs } from "@storybook/addon-knobs";
+
 import {
   Box,
   Column,
@@ -15,7 +16,7 @@ import {
   View,
   ZStack,
 } from "../../src/components/primitives";
-import { AppBar, Button, IconButton } from "../../src/components/composites";
+import { AppBar, Button, IconButton, List } from "../../src/components/composites";
 import Theme from "../../src/theme";
 
 type GetStory = () => JSX.Element | JSX.Element[];
@@ -166,7 +167,14 @@ storiesOf("Primitives", module)
       />
     </Stack>
   ))
-  .add("Icon", () => <Icon name={text("name", "menu")} type="MaterialIcons" />);
+  .add("Icon", () => <Icon name={text("name", "menu")} type="MaterialIcons" />)
+  .add("List", () => (
+    <List space={10} type="bullet">
+      <Text>This is a list item.</Text>
+      <Text>This is a list item.</Text>
+      <Text>This is a list item.</Text>
+    </List>
+  ));
 
 storiesOf("Composites", module)
   .addDecorator((getStory: GetStory) => (
