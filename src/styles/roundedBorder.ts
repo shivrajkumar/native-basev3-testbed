@@ -1,0 +1,23 @@
+export default [
+    {
+        borderRadius:"2px"
+    },
+    {
+        borderRadius:"4px"
+    },
+    {
+        borderRadius:"8px"
+    },
+    {
+        borderRadius:"16px"
+    },
+    {
+        borderRadius:"32px"
+    },
+    {
+        borderRadius:"64px"
+    },
+    {
+        borderRadius:"128px"
+    }
+];

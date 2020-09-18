@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import { storiesOf } from "@storybook/react-native";
 import { boolean, color, number, select, text, withKnobs } from "@storybook/addon-knobs";
 import {
-  Box,
   Column,
   Columns,
   HStack,
@@ -15,6 +14,7 @@ import {
   View,
   ZStack,
 } from "../../src/components/primitives";
+import { Box } from "../../src/components/new";
 import { AppBar, Badge, Button, IconButton } from "../../src/components/composites";
 import Theme from "../../src/theme";
 
@@ -28,6 +28,17 @@ storiesOf("Primitives", module)
         {getStory()}
       </View>
     </ThemeProvider>
+  ))
+  .add("Box", () => (
+    <Box
+      shadow={1}
+      h="80vh"
+      width={1}
+      bgImg="url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)"
+      roundedTop="25%"
+      bgRepeat="no-repeat"
+      bgColor="#ffff"
+    />
   ))
   .add("Badge", () => <Badge value={22} />)
   .add("VStack", () => (
@@ -103,25 +114,7 @@ storiesOf("Primitives", module)
       </Columns>
     </Stack>
   ))
-  .add("Box", () => (
-    <Box
-      shadow={select(
-        "shadow",
-        {
-          1: 1,
-          2: 2,
-          3: 3,
-          4: 4,
-          5: 5,
-          6: 6,
-        },
-        2,
-      )}
-      height={70}
-      width={[1, 1 / 2, 1 / 4]}
-      bg={color("bg", "blue.3")}
-    />
-  ))
+
   .add("Columns", () => (
     <Columns space={number("space", 3)} height={number("height", 100)} mb={number("mb", 3)}>
       <Column
