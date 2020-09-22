@@ -29,7 +29,7 @@ import {
   customShadow,
 } from "../../../utils/customProps";
 
-export type IBoxProps = ViewProps &
+export type IContainerProps = ViewProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -46,7 +46,7 @@ export type IBoxProps = ViewProps &
     children?: JSX.Element | JSX.Element[];
   };
 
-const StyledBox = styled(View)<IBoxProps>(
+const StyledContainer = styled(View)<IContainerProps>(
   color,
   space,
   layout,
@@ -59,8 +59,13 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout,
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Container = ({ style, ...props }: IContainerProps) => {
+    let computedStyle: ViewStyle | undefined = style;
+  computedStyle = StyleSheet.flatten([
+    style,
+    { width:"100%" },
+  ]);
+  return <StyledContainer {...props} style={computedStyle} />;
 };
 
-export default Box;
+export default Container;

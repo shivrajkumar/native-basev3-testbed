@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewProps, ViewStyle } from "react-native";
 import styled from "styled-components/native";
+import * as CSS from "csstype";
 import {
   BorderProps,
   ColorProps,
@@ -29,7 +30,7 @@ import {
   customShadow,
 } from "../../../utils/customProps";
 
-export type IBoxProps = ViewProps &
+export type IFlexProps = ViewProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -42,11 +43,16 @@ export type IBoxProps = ViewProps &
   customBackgroundProps &
   BorderProps & {
     style?: ViewStyle;
-    ratio?: number | undefined;
     children?: JSX.Element | JSX.Element[];
+    direction?: CSS.Property.FlexDirection | undefined;
+    align?: CSS.Property.AlignItems | undefined;
+    justify?: CSS.Property.JustifyContent | undefined;
+    wrap?: CSS.Property.FlexWrap | undefined;
+    basis?: CSS.Property.FlexBasis | undefined;
+    grow?: CSS.Property.FlexGrow | undefined;
   };
 
-const StyledBox = styled(View)<IBoxProps>(
+const StyledFlex = styled(View)<IFlexProps>(
   color,
   space,
   layout,
@@ -59,8 +65,22 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout,
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Flex = ({ style, direction, align, justify, wrap, basis, grow, ...props }: IFlexProps) => {
+  let computedStyle: any = style;
+  computedStyle  = StyleSheet.flatten([
+    style,
+    {
+      display: "flex",
+      flexDirection: direction?direction:"row",
+      alignItems: align,
+      justifyContent: justify,
+      flexWrap: wrap,
+      flexBasis: basis,
+      flexGrow: grow,
+    },
+  ]);
+
+  return <StyledFlex {...props} style={computedStyle} />;
 };
 
-export default Box;
+export default Flex;

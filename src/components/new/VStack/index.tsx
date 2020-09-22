@@ -16,11 +16,9 @@ import {
 
 import { getSpacedChildren } from "../../../utils";
 
-export type IHStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
+export type IVStackProps = ColorProps | SpaceProps | LayoutProps | FlexboxProps | BorderProps;
 
-const StyledHStack = styled.View<IHStackProps>`
-  flex-direction: row;
-  flex-wrap: wrap;
+const StyledVStack = styled.View<IVStackProps>`
   ${color}
   ${spacing}
   ${layout}
@@ -38,14 +36,16 @@ type SpaceType =
   | "xlarge"
   | "xxlarge";
 
-type HStackProps = IHStackProps &
+type VStackProps = IVStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
     space?: number | SpaceType;
+    reversed?: any | undefined;
   };
 
-const HStack = ({ space, children, ...props }: HStackProps) => {
-  return <StyledHStack {...props}>{getSpacedChildren(children, space, "X","normal")}</StyledHStack>;
+const VStack = ({ space, children, reversed, ...props }: VStackProps) => {
+  let reverse: string = reversed ? "reverse" : "normal";
+  return <StyledVStack {...props}>{getSpacedChildren(children, space, "Y", reverse)}</StyledVStack>;
 };
 
-export default HStack;
+export default VStack;

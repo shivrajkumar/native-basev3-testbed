@@ -8,6 +8,13 @@ export default {
     neutral: "#747474",
     info: "#274788",
     promote: "#8c5bb2",
+    success: ["#c6f7d4", "#21543d"],
+    danger: ["#f8d7d9", "#731c23"],
+    warning: ["#fff3cd", "#866407"],
+    muted: ["#e2e3e5", "#65696d"],
+    dark: ["#d5d8d9", "#1b1f22"],
+    light: ["#fefefe", "#818182"],
+    default:["#edf2f6","#1a212c"],
     gray: [
       "#f7fafc",
       "#edf2f7",

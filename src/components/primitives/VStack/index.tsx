@@ -43,7 +43,7 @@ type VStackProps = IVStackProps &
   };
 
 const VStack = ({ space, children, ...props }: VStackProps) => {
-  return <StyledVStack {...props}>{getSpacedChildren(children, space, "Y")}</StyledVStack>;
+  return <StyledVStack {...props}>{getSpacedChildren(children, space, "Y","normal")}</StyledVStack>;
 };
 
 export default VStack;

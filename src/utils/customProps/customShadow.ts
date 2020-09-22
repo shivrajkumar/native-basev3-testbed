@@ -1,12 +1,12 @@
 import * as CSS from "csstype";
 // import { shadows } from "../../styles";
-import { Config, system, shadow } from "styled-system";
+import { Config, system } from "styled-system";
 
 const config: Config = {
   shadow: {
     property: "boxShadow",
     scale: "shadows",
-    shadowColor: ["#000", "#283"],
+    defaultScale: ["#000", "#ffff"],
   },
 };
 

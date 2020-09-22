@@ -42,10 +42,12 @@ type HStackProps = IHStackProps &
   ViewProps & {
     children: JSX.Element[] | JSX.Element;
     space?: number | SpaceType;
+    reversed?: any | undefined;
   };
 
-const HStack = ({ space, children, ...props }: HStackProps) => {
-  return <StyledHStack {...props}>{getSpacedChildren(children, space, "X","normal")}</StyledHStack>;
+const HStack = ({ space, children, reversed, ...props }: HStackProps) => {
+  let reverse :string = reversed ? "reverse" : "normal";
+  return <StyledHStack {...props}>{getSpacedChildren(children, space, "X", reverse)}</StyledHStack>;
 };
 
 export default HStack;

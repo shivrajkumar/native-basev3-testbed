@@ -29,7 +29,7 @@ import {
   customShadow,
 } from "../../../utils/customProps";
 
-export type IBoxProps = ViewProps &
+export type ICenterProps = ViewProps &
   ColorProps &
   SpaceProps &
   LayoutProps &
@@ -46,7 +46,7 @@ export type IBoxProps = ViewProps &
     children?: JSX.Element | JSX.Element[];
   };
 
-const StyledBox = styled(View)<IBoxProps>(
+const StyledCenter = styled(View)<ICenterProps>(
   color,
   space,
   layout,
@@ -59,8 +59,14 @@ const StyledBox = styled(View)<IBoxProps>(
   customExtra,
   customLayout,
 );
-const Box = (props: IBoxProps) => {
-  return <StyledBox {...props} style={props.style} />;
+const Center = ({ style, ...props }: ICenterProps) => {
+  let computedStyle: ViewStyle | undefined = style;
+  computedStyle = StyleSheet.flatten([
+    style,
+    { display: "flex", alignItems: "center", justifyContent: "center" },
+  ]);
+
+  return <StyledCenter {...props} style={computedStyle} />;
 };
 
-export default Box;
+export default Center;

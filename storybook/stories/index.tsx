@@ -3,19 +3,20 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { storiesOf } from "@storybook/react-native";
 import { boolean, color, number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { Column, Columns, Icon, Stack, Text, View, ZStack } from "../../src/components/primitives";
 import {
-  Column,
-  Columns,
-  HStack,
-  Icon,
-  Stack,
-  Text,
+  Box,
+  Center,
+  Container,
+  AspectRatioBox,
+  Badge,
+  Code,
+  Flex,
+  Heading,
   VStack,
-  View,
-  ZStack,
-} from "../../src/components/primitives";
-import { Box } from "../../src/components/new";
-import { AppBar, Badge, Button, IconButton } from "../../src/components/composites";
+  HStack,
+} from "../../src/components/new";
+import { AppBar, Button, IconButton } from "../../src/components/composites";
 import Theme from "../../src/theme";
 
 type GetStory = () => JSX.Element | JSX.Element[];
@@ -29,28 +30,55 @@ storiesOf("Primitives", module)
       </View>
     </ThemeProvider>
   ))
+
+  .add("AspectRatioBox", () => (
+    <Box bg="white" w="500px" p={4}>
+      <Heading size="2xl" fontSize="65px" isTruncated>
+        This is a heading that is too long for this box
+      </Heading>
+      <Flex>
+        <Box bg="orange" w="100" h="100" />
+        <Box bg="black" w="100" h="100" />
+      </Flex>
+    </Box>
+  ))
+  .add("Center", () => (
+    <Center>
+      <Text>Test Text</Text>
+      <Text>Testing this text with Stacks</Text>
+      <Box
+        ratio={16 / 9}
+        w="100"
+        bgImg="url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)"
+        roundedTop="25%"
+        bgRepeat="no-repeat"
+        bgColor="#000"
+      />
+    </Center>
+  ))
   .add("Box", () => (
     <Box
-      shadow={1}
-      h="80vh"
-      width={1}
+      ratio={16 / 9}
+      w="100"
       bgImg="url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)"
       roundedTop="25%"
       bgRepeat="no-repeat"
-      bgColor="#ffff"
+      bgColor="#000"
     />
   ))
   .add("Badge", () => <Badge value={22} />)
   .add("VStack", () => (
-    <VStack space={8}>
-      <Text>Test Text</Text>
-      <Text>Testing this text with Stacks</Text>
+    <VStack space={2}>
+      <Text>Test Text 1</Text>
+      <Text>Testing this text with Stacks 2</Text>
     </VStack>
   ))
   .add("HStack", () => (
-    <HStack space={8}>
-      <Text>Test Text</Text>
-      <Text>Testing this text with HStacks</Text>
+    <HStack space={2}>
+      <Text>Test Text 1</Text>
+      <Text>Testing this text with HStacks 2</Text>
+      <Text>Testing this text with HStacks 3</Text>
+      <Text>Testing this text with HStacks 4</Text>
     </HStack>
   ))
   .add("ZStack", () => (
